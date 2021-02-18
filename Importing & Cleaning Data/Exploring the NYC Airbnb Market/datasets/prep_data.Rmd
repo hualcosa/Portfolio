@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(stringr)
+
+airbnb <- read_csv("~/Downloads/archive/AB_NYC_2019.csv") %>%
+  select(listing_id = id, description = name, host_name, borough = neighbourhood_group, neighbourhood, room_type, price, last_review)
+```
+
+```{r}
+airbnb[77,]$last_review <- as.Date("2019-07-09")
+dirty <- airbnb %>%
+  filter(last_review >= "2019-01-01") %>%
+  mutate(nbhood_full = paste0(borough, ", ", neighbourhood),
+         price = paste(price, "dollars"),
+         last_review = as.character(last_review, "%B %d %Y")) %>%
+  select(-borough, -neighbourhood)
+
+set.seed(3)
+upper_rows <- sample(1:nrow(dirty), size = 5128)
+space_rows <- sample(1:nrow(dirty), size = 5023)
+dirty[upper_rows,]$room_type <- toupper(dirty[upper_rows,]$room_type)
+dirty[space_rows,]$room_type <- tolower(dirty[space_rows,]$room_type)
+```
+
+
+```{r}
+q1 <- dirty %>%
+  filter(as.Date(last_review, "%B %d %Y") < "2019-04-01")
+q2 <- dirty %>%
+  filter(as.Date(last_review, "%B %d %Y") < "2019-07-01",
+         as.Date(last_review, "%B %d %Y") >= "2019-04-01")
+q3 <- dirty %>%
+  filter(as.Date(last_review, "%B %d %Y") >= "2019-07-01")
+```
+
+```{r}
+library(readxl)
+write_excel_csv(q3, '~/Documents/GitHub/projects-importing-and-cleaning-data-in-r/airbnb_q3.csv')
+
+write.csv(q1, '~/Documents/GitHub/projects-importing-and-cleaning-data-in-r/airbnb_q1.csv', row.names = FALSE)
+
+write_tsv(q2, '~/Documents/GitHub/projects-importing-and-cleaning-data-in-r/airbnb_q2.tsv')
+```
+
+
+# Questions
+1. What is the mean listing price?
+2. How many of the listings are private rooms? 
+3. What is the ID of the listing that had the most recent review?
+
+```{r}
+read_excel('~/Documents/GitHub/projects-importing-and-cleaning-data-in-r/airbnb_q3.xlsx')
+```
+
