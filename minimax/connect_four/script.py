@@ -1,0 +1,60 @@
+from connect_four import *
+import random
+
+'''
+This File contains the evaluation functions that go in as parameters when calling minimax().
+
+random_eval is a dumb function that i develloped only to see if the function was working properly.
+
+my_evaluate_board is more meaningful function but still rather naive  that checks the number of
+two streak symbols.
+
+The more robust evaluation function can be found in 'connect_four.py' by the name of codecademy_evaluate_board.
+'''
+
+def random_eval(board):
+  return random.randint(-100, 100)
+
+def my_evaluate_board(board):
+  if has_won(board, 'X'):
+    return float('inf')
+  if has_won(board, 'O'):
+    return -float('inf')
+  
+  x_two_streak = 0
+  o_two_streak = 0
+  for col in range(len(board) - 1):
+    for row in range(len(board[0])):
+      if board[col][row] == 'X' and board[col + 1][row] == 'X':
+        x_two_streak += 1
+      if board[col][row] == 'O' and board[col + 1][row] == 'O':
+        o_two_streak += 1
+  return x_two_streak - o_two_streak
+  
+def two_ai_game():
+    my_board = make_board()
+    while not game_is_over(my_board):
+      #The "X" player finds their best move.
+      result = minimax(my_board, True, 4, -float("Inf"), float("Inf"), my_evaluate_board)
+      print( "X Turn\nX selected ", result[1])
+      print(result[1])
+      select_space(my_board, result[1], "X")
+      print_board(my_board)
+
+      if not game_is_over(my_board):
+        #The "O" player finds their best move
+        result = minimax(my_board, False, 4, -float("Inf"), float("Inf"), codecademy_evaluate_board)
+        print( "O Turn\nO selected ", result[1])
+        print(result[1])
+        select_space(my_board, result[1], "O")
+        print_board(my_board)
+    if has_won(my_board, "X"):
+        print("X won!")
+    elif has_won(my_board, "O"):
+        print("O won!")
+    else:
+        print("It's a tie!")
+
+two_ai_game()
+
+  
