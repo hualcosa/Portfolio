@@ -1,5 +1,8 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        import numpy as np
-        a = np.array(nums)
-        return False if len(nums) == len(np.unique(a)) else True
+        set_ = set()
+        for n in nums:
+            if n in set_:
+                return True
+            set_.add(n)
+        return False
