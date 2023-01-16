@@ -1,0 +1,17 @@
+[{
+  "data": "[NbConvertApp] Converting notebook script.ipynb to html\n",
+  "stream_name": "stderr",
+  "time": 3.300581802999659
+},{
+  "data": "[NbConvertApp] ERROR | Notebook JSON is invalid: Additional properties are not allowed ('outputs', 'execution_count' were unexpected)\n\nFailed validating 'additionalProperties' in markdown_cell:\n\nOn instance['cells'][0]:\n{'cell_type': 'markdown',\n 'execution_count': None,\n 'metadata': {'_cell_guid': '182a3810-aab7-4d65-8ff7-0ad50183d769',\n              '_uuid': 'c8c2cca5ed3dcf9ff50ba2da4c9db56329bfc2cb'},\n 'outputs': ['...0 outputs...'],\n 'source': '**Author:** Raoul Malm  \\n'\n           '\\n'\n           '**Description:** \\n'\n           '\\n'\n           'This notebook demon...'}\n[NbConvertApp] Executing notebook with kernel: python3\n",
+  "stream_name": "stderr",
+  "time": 3.3360208360027173
+},{
+  "data": "[NbConvertApp] Support files will be in __results___files/\n[NbConvertApp] Making directory __results___files\n",
+  "stream_name": "stderr",
+  "time": 90.69703016400308
+},{
+  "data": "[NbConvertApp] Making directory __results___files\n[NbConvertApp] Making directory __results___files\n[NbConvertApp] Writing 319593 bytes to __results__.html\n",
+  "stream_name": "stderr",
+  "time": 90.73209285399935
+}]
