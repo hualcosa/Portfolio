@@ -1,3 +1,4 @@
 # Personal Portfolio
-This section consists of projects that I have completed during my studies in Coursera, Datacamp, Codecademy, udemy, etc. There are mainly jupyter
-notebooks in Python and some in R. There are also Bash and SQL scripts. they cover different areas of Data Science. Have fun!
+Projects, case studies, and analysis that I did in the companies I worked or Courses/Certifications that I took.
+
+Have fun!
