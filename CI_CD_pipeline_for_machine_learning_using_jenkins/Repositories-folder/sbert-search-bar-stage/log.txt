@@ -1,0 +1,18 @@
+[info] Before running engine.py
+230 temp_ml/project_mappings.csv
+197 data/project_mappings.csv
+-------- Start Training Search Index: 2022-12-21 19:44:23.140892 --------
+Raw data generated!
+Project mappings saved to query the results!
+path: data/project_mappings.csv
+Abbreviations data read!
+Data preprocessing done!
+Embeddings created!
+FAISS index generated and saved in output!
+-------- Done Training Search Index: 2022-12-21 19:45:28.050725 --------
+[info] After running engine.py
+230 temp_ml/project_mappings.csv
+230 data/project_mappings.csv
+[info] validating data change
+[info] data has not changed, checking if code changes have not broken the search index
+CHANGE VALIDATION: SUCCESS

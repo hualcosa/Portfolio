@@ -1,0 +1,92 @@
+pipeline {
+    agent any
+    environment {
+        PATH = "$WORKSPACE/miniconda/bin:$PATH"
+    }
+    stages {
+        stage('Repos') {
+            steps {
+                // clean workspace 
+                cleanWs(
+                    deleteDirs: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '*', type: 'INCLUDE']
+                ])
+                
+                script {
+                    // retrieve github personal access token from jenkins parameters
+                    def ghPersonalAccessToken = params['GH_PERSONAL_ACCESS_TOKEN']
+                    
+                    // checkout repo in prod branch
+                    checkout([
+                        $class: 'GitSCM', 
+                        branches: [[name: "origin/prod"]], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: [[credentialsId: "github-credentials", url: "https://projectprodezyre:${ghPersonalAccessToken}@github.com/projectpro-product/sbert-search-bar.git"]]
+                    ]) 
+                }  
+            }
+        }
+        stage("Setup ML Environment") {
+            steps {
+                //check if ml environment exists
+                script {
+                    sh '''#!/usr/bin/env bash
+                    conda create -y -n sbar-data python=3.10
+                    source activate sbar-data
+                    pip install -r requirements.txt
+                    '''
+                }
+            }
+        }
+        stage("Data Monitoring") {
+            steps {
+                // data monitoring will run every <T> minutes 
+                sh'''#!/usr/bin/env bash
+                source activate sbar-data
+                echo '[info] Running data monitor'
+                echo '[info] Running data monitor'>log.txt
+                python monitor_data.py>>log.txt
+                '''
+            }
+        }
+        stage("Update Search Bar Data") {
+            steps {
+                // Update data on search bar server
+                script {
+                    if (sh(returnStdout: true, script: 'cat log.txt | tail -n 1').contains("DATA UPDATE REQUIRED")) {
+                        echo "[info] Triggering update-searchbar job"
+                        currentBuild.result = 'SUCCESS'
+                        build job: 'job-update-searchbar', parameters: []
+                    } else {
+                        echo "[info] No changes in data - aborting"
+                        currentBuild.result = 'ABORTED'
+                    }
+                }
+                
+            }
+        }
+        stage("Sync stage with prod") {
+            steps {
+                // sync stage with prod
+                script {
+                    if (sh(returnStdout: true, script: 'cat log.txt | tail -n 1').contains("DATA UPDATE REQUIRED")) {
+                        echo "[info] Syncing stage with prod"
+                        sh '''#!/usr/bin/env bash
+                        git stash
+                        git checkout stage
+                        git pull origin stage --rebase
+                        git pull origin prod --rebase
+                        git push origin stage
+                        '''
+                    } else {
+                        echo "[info] No changes in data - aborting"
+                        currentBuild.result = 'ABORTED'
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,230 @@
+title
+Walmart Sales Forecasting Data Science Project
+Credit Card Default Prediction using Machine learning techniques
+Analyse Yelp Dataset with Spark & Parquet Format on Azure Databricks
+Expedia Hotel Recommendations Data Science Project
+Data Science Project in Python on BigMart Sales Prediction
+Inventory Demand Forecasting using Machine Learning in R
+Machine Learning Project to Forecast Rossmann Store Sales
+Build an Azure Recommendation Engine on Movielens Dataset
+Bitcoin Data Mining on AWS Free Tier
+Ensemble Machine Learning Project - All State Insurance Claims Severity Prediction
+Web Server Log Processing using Hadoop in Azure
+Hadoop Project-Analysis of Yelp Dataset using Hadoop Hive
+Predict Macro Economic Trends using Kaggle Financial Dataset
+"Airline Dataset Analysis using Hadoop, Hive, Pig and Impala"
+Real-time Auto Tracking with Spark-Redis
+Hive Mini Project to Build a Data Warehouse for e-Commerce
+Online Hadoop Projects -Solving small file problem in Hadoop
+Real-Time Streaming of Twitter Sentiments AWS EC2 NiFi
+Credit Card Fraud Detection as a Classification Problem
+Learn Data Processing with Spark SQL using Scala on AWS
+Spark Project -Real-time data collection and Spark Streaming Aggregation
+Time Series Forecasting with LSTM Neural Network Python
+Yelp Data Processing Using Spark And Hive Part 1
+PySpark Tutorial - Learn to use Apache Spark with Python
+Credit Card Anomaly Detection using Autoencoders
+Yelp Data Processing using Spark and Hive Part 2
+House Price Prediction Project using Machine Learning in Python
+Data Science Project - Instacart Market Basket Analysis
+Hadoop Project to Perform Hive Analytics using SQL and Scala
+Log Analytics Project with Spark Streaming and Kafka
+Machine Learning or Predictive Models in IoT - Energy Prediction Use Case
+Time Series Analysis Project in R on Stock Market forecasting
+Explore features of Spark SQL in practice on Spark 2.0
+Data Processing and Transformation in Hive using Azure VM
+Build a Music Recommendation Algorithm using KKBox's Dataset
+Implementing Slow Changing Dimensions in a Data Warehouse using Hive and Spark
+Predict Churn for a Telecom company using Logistic Regression
+Machine learning for Retail Price Recommendation with R
+Data Science Project on Wine Quality Prediction in R
+Human Activity Recognition Using Multiclass Classification
+Create A Data Pipeline based on Messaging Using PySpark Hive
+Churn Prediction in Telecom using Machine Learning in R
+German Credit Dataset Analysis to Classify Loan Applications
+Spark Project-Analysis and Visualization on Yelp Dataset
+Build an Image Classifier for Plant Species Identification
+Loan Eligibility Prediction in Python using H2O.ai
+Avocado Machine Learning Project Python for Price Prediction
+Census Income Data Set Project - Predict Adult Census Income
+NLP and Deep Learning For Fake News Classification in Python
+Data Science Project-TalkingData AdTracking Fraud Detection
+Identifying Product Bundles from Sales Data Using R Language
+Ecommerce product reviews - Pairwise ranking and sentiment analysis
+Loan Eligibility Prediction using Gradient Boosting Classifier
+Machine Learning project for Retail Price Optimization
+Customer Churn Prediction Analysis using Ensemble Techniques
+Natural language processing Chatbot application using NLTK for text classification
+NLP Project to Build a Resume Parser in Python using Spacy
+Customer Market Basket Analysis using Apriori and Fpgrowth algorithms
+Topic modelling using Kmeans clustering to group customer reviews
+Demand prediction of driver availability using multistep time series analysis
+Build a Collaborative Filtering Recommender System in Python
+"Build a big data pipeline with AWS Quicksight, Druid, and Hive"
+AWS Project - Build an ETL Data Pipeline on AWS EMR Cluster
+NLP Project on LDA Topic Modelling Python using RACE Dataset
+Ola Bike Rides Request Demand Forecast
+GCP Data Ingestion with SQL using Google Cloud Dataflow
+Building Real-Time AWS Log Analytics Solution
+"Build a Similar Images Finder with Python, Keras, and Tensorflow"
+Medical Image Segmentation Deep Learning Project
+Image Segmentation using Mask R-CNN with Tensorflow
+Digit Recognition using CNN for MNIST Dataset in Python
+Build a Face Recognition System in Python using FaceNet
+Locality Sensitive Hashing Python Code for Look-Alike Modelling
+Forecasting Business KPI's with Tensorflow and Python
+Build OCR from Scratch Python using YOLO and Tesseract
+AWS Project-Website Monitoring using AWS Lambda and Aurora
+Time Series Python Project using Greykite and Neural Prophet
+Abstractive Text Summarization using Transformers-BART Model
+Word2Vec and FastText Word Embedding with Gensim in Python
+Deep Learning Project- Real-Time Fruit Detection using YOLOv4
+Create Your First Chatbot with RASA NLU Model and Python
+"Deploying auto-reply Twitter handle with Kafka, Spark and LSTM"
+Orchestrate Redshift ETL using AWS Glue and Step Functions
+Multi-Class Text Classification with Deep Learning using BERT
+How to deal with slowly changing dimensions using snowflake?
+"Build a Real-Time Dashboard with Spark, Grafana, and InfluxDB"
+Build a Multi Touch Attribution Machine Learning Model in Python
+Build CNN for Image Colorization using Deep Transfer Learning
+FEAST Feature Store Example for Scaling Machine Learning
+OpenCV Project for Beginners to Learn Computer Vision Basics
+Deep Learning Project for Text Detection in Images using Python
+Classification Projects on Machine Learning for Beginners - 1
+Build Classification Algorithms for Digital Transformation[Banking]
+Snowflake Real Time Data Warehouse Project for Beginners-1
+MLOps Project for a Mask R-CNN on GCP using uWSGI Flask
+OpenCV Project to Master Advanced Computer Vision Concepts
+Build a Scalable Event Based GCP Data Pipeline using DataFlow
+Recommender System Machine Learning Project for Beginners-1
+Time Series Project to Build an Autoregressive Model in Python
+Build a Moving Average Time Series Forecasting Model in Python
+Recommender System Machine Learning Project for Beginners-2
+Text Classification with Transformers-RoBERTa and XLNet Model
+Time Series Forecasting Project-Building ARIMA Model in Python
+Build a Multi Class Image Classification Model Python using CNN
+NLP Project for Beginners on Text Processing and Classification
+"Retail Analytics Project Example using Sqoop, HDFS, and Hive"
+MLOps on GCP Project for Autoregression using uWSGI Flask
+GCP Project to Explore Cloud Functions using Python Part 1
+MLOps AWS Project on Topic Modeling using Gunicorn Flask
+Time Series Project to Build a Multiple Linear Regression Model
+Deep Learning Project for Beginners with Source Code Part 1
+MLOps on GCP Project for Moving Average using uWSGI Flask
+A Hands-On Approach to Learn Apache Spark using Scala
+GCP MLOps Project to Deploy ARIMA Model using uWSGI Flask
+BERT Text Classification using DistilBERT and ALBERT Models
+Classification Projects on Machine Learning for Beginners - 2
+Build an optimal End-to-End MLOps Pipeline and Deploy on GCP
+Build a Logistic Regression Model in Python from Scratch
+Deploy Transformer BART Model for Text summarization on GCP
+Build a Multi ClassText Classification Model using Naive Bayes
+Skip Gram Model Python Implementation for Word Embeddings
+Model Deployment on GCP using Streamlit for Resume Parsing
+Azure Stream Analytics for Real-Time Cab Service Monitoring
+Build Time Series Models for Gaussian Processes in Python
+Build ARCH and GARCH Models in Time Series using Python
+AWS MLOps Project to Deploy Multiple Linear Regression Model
+Deploying Machine Learning Models with Flask for Beginners
+MLOps Project on GCP using Kubeflow for Model Deployment
+AWS Snowflake Data Pipeline Example using Kinesis and Airflow
+GCP Project-Build Pipeline using Dataflow Apache Beam Python
+Azure Text Analytics for Medical Search Engine Deployment
+GCP Project to Learn using BigQuery for Exploring Data
+AWS MLOps Project for Gaussian Process Time Series Modeling
+AWS MLOps Project for ARCH and GARCH Time Series Models
+ML Model Deployment on AWS for Customer Churn Prediction
+End-to-End Speech Emotion Recognition Project using ANN
+Tensorflow Transfer Learning Model for Image Classification
+Detectron2 Object Detection and Segmentation Example Python
+Loan Eligibility Prediction Project using Machine learning on GCP
+Linear Regression Model Project in Python for Beginners Part 1
+Isolation Forest Model and LOF for Anomaly Detection in Python
+Deep Learning Project for Time Series Forecasting in Python
+Recommender System Machine Learning Project for Beginners-3
+"Streaming Data Pipeline using Spark, HBase and Phoenix"
+Build a Graph Based Recommendation System in Python -Part 1
+SQL Project for Data Analysis using Oracle Database-Part 1
+AWS MLOps Project to Deploy a Classification Model [Banking]
+Recommender System Machine Learning Project for Beginners-4
+Build Portfolio Optimization Machine Learning Models in R
+Build a Customer Churn Prediction Model using Decision Trees
+Build Deep Autoencoders Model for Anomaly Detection in Python
+Build an AWS ETL Data Pipeline in Python on YouTube Data
+"Learn Object Tracking (SOT, MOT) using OpenCV and Python"
+MLOps Project to Deploy Resume Parser Model on Paperspace
+Deploy Transformer-BART Model on Paperspace Cloud
+"Build Regression (Linear,Ridge,Lasso) Models in NumPy Python"
+Build a Multi-Class Classification Model in Python on Saturn Cloud
+Build CNN Image Classification Models for Real Time Prediction
+Azure Deep Learning-Deploy RNN CNN models for TimeSeries
+Hands-On Approach to Master PyTorch Tensors with Examples
+SQL Project for Data Analysis using Oracle Database-Part 2
+SQL Project for Data Analysis using Oracle Database-Part 3
+SQL Project for Data Analysis using Oracle Database-Part 4
+Build a Churn Prediction Model using Ensemble Learning
+Time Series Analysis with Facebook Prophet Python and Cesium
+Learn How to Build PyTorch Neural Networks from Scratch
+Airline Dataset Analysis using PySpark GraphFrames in Python
+Learn Hyperparameter Tuning for Neural Networks with PyTorch
+Build Multi Class Text Classification Models with RNN and LSTM
+Learn How to Build a Linear Regression Model in PyTorch
+MLOps using Azure Devops to Deploy a Classification Model
+SQL Project for Data Analysis using Oracle Database-Part 5
+Graph Database Modelling using AWS Neptune and Gremlin
+Learn How to Build a Logistic Regression Model in PyTorch
+Learn to Build Generative Models Using PyTorch Autoencoders
+Hands-On Real Time PySpark Project for Beginners
+PySpark Big Data Project to Learn RDD Operations
+PySpark Project for Beginners to Learn DataFrame Operations
+PySpark Project to Learn Advanced DataFrame Concepts
+End-to-End Big Data Project to Learn PySpark SQL Functions
+Snowflake Azure Project to build real-time Twitter feed dashboard
+Learn Real-Time Data Ingestion with Azure Purview
+Getting Started with Azure Purview for Data Governance
+Build a Review Classification Model using Gated Recurrent Unit
+Build a CNN Model with PyTorch for Image Classification
+Build a real-time Streaming Data Pipeline using Flink and Kinesis
+Build a Hybrid Recommender System in Python using LightFM
+Build an Analytical Platform for eCommerce using AWS Services
+Deploy an Application to Kubernetes in Google Cloud using GKE
+AWS Athena Big Data Project for Querying COVID-19 Data
+Linear Regression Model Project in Python for Beginners Part 2
+PyTorch Project to Build a LSTM Text Classification Model
+Build Regression Models in Python for House Price Prediction
+Learn to Build a Polynomial Regression Model from Scratch
+SQL Project for Data Analysis using Oracle Database-Part 6
+PySpark ETL Project-Build a Data Pipeline using S3 and MySQL
+Build a Graph Based Recommendation System in Python-Part 2
+Image Classification Model using Transfer Learning in PyTorch
+Build a Text Classification Model with Attention Mechanism NLP
+Learn to Build a Neural network from Scratch using NumPy
+PySpark Project-Build a Data Pipeline using Hive and Cassandra
+PySpark Project-Build a Data Pipeline using Kafka and Redshift
+NLP Project for Multi Class Text Classification using BERT Model
+SQL Project for Data Analysis using Oracle Database-Part 7
+AWS Project for Batch Processing with PySpark on AWS EMR
+Project-Driven Approach to PySpark Partitioning Best Practices
+Learn to Build Regression Models with PySpark and Spark MLlib
+Build Classification and Clustering Models with PySpark and MLlib
+Learn Performance Optimization Techniques in Spark-Part 1
+Learn Performance Optimization Techniques in Spark-Part 2
+PyCaret Project to Build and Deploy an ML App using Streamlit
+Build Customer Propensity to Purchase Model in Python
+PyTorch Project to Build a GAN Model on MNIST Dataset
+Hands-On Approach to Causal Inference in Machine Learning
+Time Series Classification Project for Elevator Failure Prediction
+"Build a Data Pipeline in AWS using NiFi, Spark, and ELK Stack"
+Build a Text Generator Model using Amazon SageMaker
+Build an Image Segmentation Model using Amazon SageMaker
+Build Real Estate Price Prediction Model with NLP and FastAPI
+CycleGAN Implementation for Image-To-Image Translation
+Hands-On Approach to Regression Discontinuity Design Python
+Build an End-to-End AWS SageMaker Classification Model
+Learn to Build a Siamese Neural Network for Image Similarity
+Building Data Pipelines in Azure with Azure Synapse Analytics
+Build a Credit Default Risk Prediction Model with LightGBM
+Talend Real-Time Project for ETL Process Automation
+End-to-End ML Model Monitoring using Airflow and Docker
+Build an AI Chatbot from Scratch using Keras Sequential Model
+Getting Started with Pyspark on AWS EMR and Athena

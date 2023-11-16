@@ -1,0 +1,165 @@
+pipeline {
+    agent any
+    environment {
+        PATH = "$WORKSPACE/miniconda/bin:$PATH"
+    }
+    stages {
+        stage('Repos') {
+            // this will clean workspace and then checkout the repo and merge the source branch into stage branch before running the pipeline
+            steps {
+                cleanWs(
+                    deleteDirs: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '*', type: 'INCLUDE']
+                ])
+
+                echo "[info] Pull Request author: ${env.ghprbPullAuthorLogin}"
+                echo "[info] Pull Request Branch: ${env.ghprbSourceBranch}"
+                echo "[info] Pull Request Target Branch: ${env.ghprbTargetBranch}"
+                echo "[info] Current Branch: ${env.GIT_BRANCH}"
+                echo "[info] Current Pull Request ID: ${env.ghprbPullId}"
+                echo "[info] Current Pull Request Title: ${env.ghprbPullTitle}"
+                script {
+                    // retrieve github personal access token from jenkins parameters
+                    def ghPersonalAccessToken = params['GH_PERSONAL_ACCESS_TOKEN']
+                    // checkout prod branch
+                    checkout([
+                        $class: 'GitSCM', 
+                        branches: [[name: "origin/prod"]], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: [[credentialsId: "github-credentials", url: "https://projectprodezyre:${ghPersonalAccessToken}@github.com/projectpro-product/sbert-search-bar.git"]]
+                    ])
+                }
+                
+
+                sh '''#!/usr/bin/env bash
+                echo '[info] Make backup of current prod data and model'
+                rm log.txt || echo "[info] log.txt not found -- skipping"
+                rm -r temp_ml || echo "[info] temp_ml not found -- skipping"
+                mkdir temp_ml
+                cp data/project_mappings.csv temp_ml/project_mappings.csv
+                cp output/search.index temp_ml/search.index
+                '''
+
+                script {
+                    // retrieve github personal access token from jenkins parameters
+                    def ghPersonalAccessToken = params['GH_PERSONAL_ACCESS_TOKEN']
+                    // checkout branches and do necessary pre-build merges
+                    checkout([
+                        $class: 'GitSCM', 
+                        branches: [[name: "origin/${env.ghprbSourceBranch}"]], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: [[credentialsId: "github-credentials", url: "https://projectprodezyre:${ghPersonalAccessToken}@github.com/projectpro-product/sbert-search-bar.git"]]
+                    ])
+                    sh("git pull origin ${env.ghprbSourceBranch} --rebase")
+                    
+                    checkout([
+                        $class: 'GitSCM', 
+                        branches: [[name: 'origin/stage']], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: [[credentialsId: "github-credentials", url: "https://projectprodezyre:${ghPersonalAccessToken}@github.com/projectpro-product/sbert-search-bar.git"]]
+                    ])
+                    sh("git checkout stage")
+                    sh("git reset --hard HEAD")
+                    sh("git pull origin stage --rebase")
+                    sh("git merge origin/${env.ghprbSourceBranch} --no-edit")
+                    sh("git branch")
+                }  
+            }
+        }
+        stage("Setup ML Environment") {
+            steps {
+                //check if ml environment exists and update it
+                script {
+                    sh '''#!/usr/bin/env bash
+                    echo '[info] Setting up ML environment'
+                    conda env list | grep sbar-code
+
+                    conda create -y -n sbar-code python=3.10
+                    source activate sbar-code
+                    pip install -r requirements.txt
+                    '''
+                }
+            }
+        }
+        stage("Functional Tests") {
+            // this will run the functional unit tests
+            // if the tests fail, the pipeline will stop
+            steps {
+                sh '''#!/usr/bin/env bash
+                source activate sbar-code
+                python -m unittest discover -s test -p "test*.py"
+                '''
+            }
+        }
+        stage("Build Search Index") {
+            // this will build the search index
+            steps {
+                sh'''#!/usr/bin/env bash
+                source activate sbar-code
+                git branch
+
+                echo '[info] Before running engine.py'>log.txt
+                wc -l temp_ml/project_mappings.csv>>log.txt
+                wc -l data/project_mappings.csv>>log.txt
+
+                echo '[info] Running engine.py ...'
+                python engine.py>>log.txt
+
+                echo '[info] After running engine.py'>>log.txt
+                wc -l temp_ml/project_mappings.csv>>log.txt
+                wc -l data/project_mappings.csv>>log.txt
+                '''
+            }
+        }
+        stage("Push Changes to Stage") {
+            // this will push the changes to stage if 
+            // there are any changes in the data or 
+            // changes in code base
+            //
+            // it will also create a PR to merge stage to prod branch
+            // the pull request will be merged automatically if the
+            
+            steps {
+            script {
+                    // activate conda environment
+                    sh '''#!/usr/bin/env bash
+                    source activate sbar-code
+                    python validate_changes.py >> log.txt
+                    '''
+                    // check if there are any changes in the data
+                    if (sh(returnStdout: true, script: "cat log.txt | tail -n 1").contains("CHANGE VALIDATION: SUCCESS")) {
+                        // if there are changes, push the changes to stage
+                        echo "[info] Changes in data, merging to stage"
+                        sh("git add .")
+                        sh("git commit -m \"[jenkins-server autocommit] JenkinsMerge :: ${env.ghprbPullTitle}->#${env.ghprbPullId}\"")
+                        sh("git push origin stage")
+                    } else {
+                        // if there are no changes, abort the deployment
+                        echo "[info] No changes in data or search index broken by code change: aborting deployment"
+                        currentBuild.result = 'ABORTED'
+                    }
+                }
+            }
+        }
+        stage("Deploy Changes to Production") {
+            steps {
+                sh'''#!/usr/bin/env bash
+                git checkout prod
+                git pull origin prod --rebase
+                git merge stage --no-edit
+                git push origin prod
+
+                echo "[info] ssh to the search bar server and pull the latest changes"
+                '''
+                build job: 'job-update-searchbar', parameters: []
+            }
+        }
+    }
+}
